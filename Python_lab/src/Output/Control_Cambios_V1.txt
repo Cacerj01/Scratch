@@ -1,0 +1,7 @@
+/mnt/linux/home/cacerj01/Scripts/Scratch/Python_lab/src/BAM/DNA/ASD_2_FGH.bam
+/mnt/linux/home/cacerj01/Scripts/Scratch/Python_lab/src/BAM/DNA/ASD_S1001001_FGH.bam
+/mnt/linux/home/cacerj01/Scripts/Scratch/Python_lab/src/BAM/DNA/ASD_10011001_FGH.bam
+/mnt/linux/home/cacerj01/Scripts/Scratch/Python_lab/src/BAM/DNA/ASD_1_FGH.bam
+/mnt/linux/home/cacerj01/Scripts/Scratch/Python_lab/src/BAM/DNA/ASD_10011002R2_FGH.bam
+/mnt/linux/home/cacerj01/Scripts/Scratch/Python_lab/src/BAM/RNA/ASD_3_FGH.bam
+/mnt/linux/home/cacerj01/Scripts/Scratch/Python_lab/src/BAM/RNA/ASD_4_FGH.bam

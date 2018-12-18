@@ -61,11 +61,63 @@ while line:
     id = line2.split("_")[-2]
     if id is not None:
         if len(id) != 8:
-            print(line + "\t" + "NEWID", file = cambiosv2)
+            print(line + "\t" + id + "\t" "NEWID", file = cambiosv2)
         elif id.isdigit() == False:
-            print(line + "\t" + "NEWID", file = cambiosv2)
+            print(line + "\t" + id + "\t" + "NEWID", file = cambiosv2)
         else:
-            print(line + "\t" + id, file = cambiosv2)
+            print(line + "\t" + id + "\t" + id, file = cambiosv2)
     line = f.readline()
 f.close()
 cambiosv2.close()
+
+# Genera el archivo temporal Control_Cambios_V3.txt
+cambiosv3_path = os.path.join(args.output, 'Output', 'Control_Cambios_V3.txt')
+cambiosv3 = open(cambiosv3_path, 'w')
+
+f = open("/mnt/linux/home/cacerj01/Scripts/Scratch/Python_lab/src/Output/Control_Cambios_V2.txt", "r")
+line = f.readline()
+while line:
+    line = "".join(line.split("\n"))
+    idstatus = line.split("\t")[-1]
+    if idstatus == "NEWID":
+        line2 = line.split("\t")[-2]
+        line2 = line2.split("/")[-1]
+        id = line2.split("_")[1]
+        id = "".join(id.split("-"))
+        id = "".join(id.split("R1"))
+        id = "".join(id.split("R2"))
+            if len(id) == 4:
+                if id.startswith("S") == True:
+                    id = "10011".join(id.split("S"))
+                    print(line.split("\t")[0] + "\t" + str(id) + "\t", file = cambiosv3)
+                else:
+                    id = ['1002', id]
+                    id = "".join(id)
+                    print(line.split("\t")[0] + "\t" + str(id) + "\t", file = cambiosv3)
+            elif len(id) == 6:
+                id = "10011".join(id.split("S00"))
+                print(line.split("\t")[0] + "\t" + str(id) + "\t", file = cambiosv3)
+            elif len(id) == 8:
+                if [str(i) for i in str(id)][-4] == 0:
+                    s = [int(i) for i in str(id)]
+                    s[4] = '1'
+                    id = "".join(map(str,s))
+                    print(line.split("\t")[0] + "\t" + str(id) + "\t", file = cambiosv3)
+            elif len(id) == 9:
+                s = str(id)
+                id = int(s[-9]+s[2:])
+                print(line.split("\t")[0] + "\t" + str(id) + "\t", file = cambiosv3)
+            elif len(id) == 5:
+                if id.startswith("S0") == True:
+                    id = "10011".join(id.split("S0"))
+                    print(line.split("\t")[0] + "\t" + str(id) + "\t", file = cambiosv3)
+                else:
+                    id = "1002".join(id.split("C"))
+                    print(line.split("\t")[0] + "\t" + str(id) + "\t", file = cambiosv3)
+            else:
+                print(line.split("\t")[0] + "\t" + idstatus, file = cambiosv3)
+            line = f.readline()
+f.close()
+cambiosv3.close()
+
+# 
